@@ -1,4 +1,4 @@
-# multipart-handler
+# Autoloader
 This class became necessary during the development of websites using old libraries not conforming to PSR recommendations. This class parses scripts using PHP tokenizer extension allowing to find more than one class per file. Namespaces are also supported. Sometimes it can be useful to see in which file a class reside.
 
 ##### Installation
@@ -6,7 +6,7 @@ This class became necessary during the development of websites using old librari
 You can install the package via composer:
 
 ```
-composer require djiele/multipart dev-master
+composer require djiele/autoloader dev-master
 ```
 
 ##### Simple usage

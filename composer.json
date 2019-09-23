@@ -1,5 +1,5 @@
 {
-    "name": "djiele/autoload",
+    "name": "djiele/autoloader",
     "description": "Another class loader using PHP tokenizer",
     "type": "library",
     "keywords": [
@@ -8,7 +8,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "djiele"
+            "name": "djiele",
             "email": "ojo.djiele@gmail.com",
             "homepage": "https://www.djiele.net"
         }
