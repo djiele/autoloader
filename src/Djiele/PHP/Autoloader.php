@@ -4,15 +4,21 @@ namespace Djiele\PHP;
 
 class Autoloader
 {
+    private $noCache;
     private $classMapDir = __DIR__;
     private $folders = [__DIR__];
     private $classMap = null;
+    
+    public function __construct($noCache = false)
+    {
+        $this->noCache = $noCache;
+    }
     
     public function register()
     {
         if(null == $this->classMap) {
             $classMapFile = rtrim($this->classMapDir, '\\/') . DIRECTORY_SEPARATOR . 'autoloader-classmap.php';
-            if(is_file($classMapFile) && is_readable($classMapFile)) {
+            if(false === $this->noCache && is_file($classMapFile) && is_readable($classMapFile)) {
                 $this->classMap = include $classMapFile;
             } else {
                 self::setClassMap();
@@ -79,7 +85,7 @@ class Autoloader
                         if (is_array($token) && T_NAMESPACE == $token[0]) {
                             $namespaceFound = true;
                             $namespaceAccu = '';
-                        } elseif (is_array($token) && (T_CLASS == $token[0] || T_INTERFACE == $token[0])) {
+                        } elseif (is_array($token) && (T_CLASS == $token[0] || T_INTERFACE == $token[0] || T_TRAIT == $token[0])) {
                             $classFound = true;
                         } elseif (is_array($token) && T_WHITESPACE == $token[0]) {
                             continue;
