@@ -1,0 +1,23 @@
+{
+    "name": "djiele/autoload",
+    "description": "Another class loader using PHP tokenizer",
+    "type": "library",
+    "keywords": [
+        "class loader", "autoload", "class", "tokenizer", "spl_autoload_register"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "djiele"
+            "email": "ojo.djiele@gmail.com",
+            "homepage": "https://www.djiele.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Djiele\\": "src/Djiele/"
+        }
+    }
+}
