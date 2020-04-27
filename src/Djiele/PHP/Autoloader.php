@@ -4,29 +4,30 @@ namespace Djiele\PHP;
 
 class Autoloader
 {
-    private $noCache;
+    private $useCache;
     private $classMapDir = __DIR__;
     private $folders = [__DIR__];
     private $classMap = null;
     
-    public function __construct($noCache = false)
+    public function __construct($id, $useCache = true)
     {
-        $this->noCache = $noCache;
+		$this->id = $id;
+        $this->useCache = $useCache;
     }
     
     public function register()
     {
         if(null == $this->classMap) {
-            $classMapFile = rtrim($this->classMapDir, '\\/') . DIRECTORY_SEPARATOR . 'autoloader-classmap.php';
-            if(false === $this->noCache && is_file($classMapFile) && is_readable($classMapFile)) {
+            $classMapFile = rtrim($this->classMapDir, '\\/') . DIRECTORY_SEPARATOR . $this->id . '-classmap.php';
+            if(true === $this->useCache && is_file($classMapFile) && is_readable($classMapFile)) {
                 $this->classMap = include $classMapFile;
             } else {
                 self::setClassMap();
-				if(false === $this->noCache) {
+				if(true === $this->useCache) {
 					if(is_writable($this->classMapDir)) {
 					   file_put_contents($classMapFile, '<?php return ' . var_export($this->classMap, true) . ';', LOCK_EX);
 					} else {
-						trigger_error('Can not write to ' . $classMapDir, E_USER_NOTICE);
+						trigger_error('Can not write to ' . (($dir = dirname($this->classMapDir)) ? $dir : '.') . '/' . basename($this->classMapDir), E_USER_NOTICE);
 					}
 				}
             }
