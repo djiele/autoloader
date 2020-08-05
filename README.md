@@ -9,7 +9,7 @@ You can install the package via composer:
 composer require djiele/autoloader dev-master
 ```
 
-##### Simple usage
+##### Usage
 
 
 ```php
