@@ -112,7 +112,7 @@ class Autoloader
             while (null !== ($candidate = array_shift($fileBuff))) {
                if(is_dir($candidate)) {
                    if(is_readable($candidate)) {
-                       $fileBuff += glob($candidate.'/*');
+                       $fileBuff += glob($candidate . '/*');
                    }
                } else {
                    $tokens = token_get_all(php_strip_whitespace($candidate));

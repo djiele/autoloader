@@ -16,7 +16,7 @@ composer require djiele/autoloader dev-master
 // including the class file
 require_once 'path/to/class/Autoloader.php';
 // or using composer
-require_once 'vendor/autoload.php'
+require_once 'vendor/autoload.php';
 
 use Djiele\PHP\Autoloader;
 

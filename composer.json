@@ -13,8 +13,10 @@
             "homepage": "https://www.djiele.net"
         }
     ],
+    "require": {
+        "php": ">=7.3.1"
+    },
     "minimum-stability": "dev",
-    "require": {},
     "autoload": {
         "psr-4": {
             "Djiele\\": "src/Djiele/"
