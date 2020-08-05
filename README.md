@@ -20,11 +20,13 @@ require_once 'vendor/autoload.php'
 
 use Djiele\PHP\Autoloader;
 
-$classLoader = new Autoloader();
+$autoloaderId = 'my-project-autoloader';
+$useCache = true; // true to create/refresh and use generated cache file
+$classLoader = new Autoloader($autoloaderId, $useCache); 
 $classLoader
     ->setClassMapDir('cache/autoloader') // path to the cache file, created if not exists
-    ->setFolders(['src', 'packages']) // array of directories to be analized
-    ->register() // launche the analyze and register the class in autoload chain
+    ->setFolders(['src', 'packages']) // array of directories to be analyzed
+    ->register() // launch the analyze and register the class in autoload chain
 ;
 ```
 Et voilà!
